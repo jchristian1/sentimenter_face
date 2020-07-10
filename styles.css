@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body {
+    text-align: center;
+    background-color: black;
+}
+
+/*left orange eye*/
+#level5_orange_left {
+    animation: wheel 100s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level1_orange_left {
+    animation: wheel 1s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level3A_orange_left {
+    animation: eyebrow 10s ease-in-out infinite alternate;
+    transform-origin: top;
+}
+
+/*right orange eye*/
+#level5_orange_right {
+    animation: wheel 100s infinite linear;
+    animation-direction: reverse;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level1_orange_right {
+    animation: wheel 1s infinite linear;
+    animation-direction: reverse;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level3A_orange_right {
+    animation: eyebrow 3s ease-in-out infinite alternate;
+    /*animation-direction: reverse;*/
+    transform-origin: top;
+}
+
+/*left green eye*/
+#level5_green_left {
+    animation: wheel 500ms infinite linear;
+    animation-direction: reverse;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level1_green_left {
+    animation: wheel 1s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level3A_green_left {
+    animation: eyebrow 10s ease-in-out infinite alternate;
+    transform-origin: top;
+}
+
+/*right green eye*/
+#level5_green_right {
+    animation: wheel 100s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level1_green_right {
+    animation: wheel 1s infinite linear;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+#level3A_green_right {
+    animation: eyebrow 10s ease-in-out infinite alternate;
+    transform-origin: top;
+}
+/*
+@keyframes wheel {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes wheel2 {
+    from {
+        transform: rotateZ(360deg);
+    }
+    to{
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes eyebrow {
+    from {
+        transform: rotateX(0deg);
+    }
+    to{
+        transform: rotateX(20deg);
+    }
+}
+*/
