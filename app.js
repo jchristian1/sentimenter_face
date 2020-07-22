@@ -60,7 +60,7 @@ gsap.to(level1_green_left, {
   });
 
 //outter
-TweenMax.to(level5_orange_right, 6, {rotation:"360", ease:Linear.easeNone, repeat:-1})
+//TweenMax.to(level5_orange_right, 6, {rotation:"360", ease:Linear.easeNone, repeat:-1})
 
 /*TweenMax.set(level5_orange_right, {
     scale:0,
@@ -84,36 +84,55 @@ TweenMax.to(level5_orange_right, 6, {rotation:"360", ease:Linear.easeNone, repea
 //  .to(green_right, {duration: 3, rotation: 360});
 //TweenMax.from(green_left,2,{x:100});
 
+function hide_green(){
+  green_left.style.display = "none";
+  green_right.style.display = "none";
+  orange_left.style.display = "initial";
+  orange_right.style.display = "initial";
+}
+
+function hide_orange(){
+  orange_left.style.display = "none";
+  orange_right.style.display = "none";
+  green_left.style.display = "initial";
+  green_right.style.display = "initial";
+}
+
 
 function sendJSON(){ 
                
     let result = document.querySelector('#result'); 
-    let intent = document.querySelector('#intent'); 
-    let label = document.querySelector('#label');    
+    let intent = document.querySelector('#intent').value; 
+    let label = document.querySelector('#label').value;    
     // Creating a XHR object 
     let xhr = new XMLHttpRequest(); 
     let url = "https://krtistianf89-python-rest-api.herokuapp.com/sentiment/va"; 
+    //let url = "http://127.0.0.1:5000/sentiment/va"; 
 
-    // open a connection 
-    xhr.open("GET", url, true); 
 
-    // Set the request header i.e. which type of content you are sending 
-    xhr.setRequestHeader("Content-Type", "application/json"); 
-    
-    // Converting JSON data to string 
-    var data = JSON.stringify({ "sentence": intent.value, "label": label.value }); 
-    alert(data);
-    
-    // Sending data with the request 
-    xhr.send(data); 
+    let data_intent = {
+        "sentence": intent,
+        "label": label
+    };
+    let options = {
+        url: url,
+        dataType: "text",
+        type: "GET",
+        data: data_intent,
+        success: function( data, status, xhr ) {
+            data = JSON.parse(data)
+            
+            if(data.score === "Positive"){
+              hide_orange();
+            }else{
+              hide_green();
+            }
 
-    // Create a state change callback 
-    xhr.onreadystatechange = function () { 
-        alert(xhr.readyState)
-        if (xhr.readyState === 4 && xhr.status === 200) { 
-            // Print received data from server 
-            result.innerHTML = this.responseText; 
-
-        } 
-    }; 
-} 
+            alert(data.score);
+        },
+        error: function( xhr, status, error ) {
+            alert(error);
+        }
+    };
+    $.ajax( options );
+    } 
